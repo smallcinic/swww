@@ -1,0 +1,15 @@
+# log of get and post for script
+
+  $file = "/home/admin/web/sngine.hplus.su/logs/getpost.txt";
+  $current = file_get_contents($file);
+  $current .= "GET\n"; 
+  foreach($_GET as $key => $value) 
+  { 
+     $current .= "\$_GET[".$key."] = ".$value."\n"; 
+  } 
+  $current .= "\nPOST\n"; 
+  foreach($_POST as $key => $value) 
+  { 
+     $current .= "\$_POST[".$key."] = ".$value."\n"; 
+  }
+  file_put_contents($file, $current);
