@@ -1,5 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading with-icon">
+        {if $sub_view == "" || $sub_view == "admins" || $sub_view == "moderators" || $sub_view == "online" || $sub_view == "banned"}
+            <div class="pull-right flip">
+                <a href="{$system['system_url']}/admincp/users/add_user" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> {__("Add New User")}
+                </a>
+            </div>
+        {/if}
         {if $sub_view == "edit"}
             <div class="pull-right flip">
                 <a target="_blank" href="{$system['system_url']}/{$data['user_name']}" class="btn btn-info">
@@ -68,6 +75,40 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+
+    {elseif $sub_view == "add_user"}
+        <div class="panel-body">
+            <form class="js_ajax-forms form-horizontal" data-url="admin/user-add.php?do=add_user">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Username")}
+                    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="user_name">
+                    </div>
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Password")}
+                    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="user_password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary">{__("Save Changes")}</button>
+                    </div>
+                </div>
+
+                <!-- success -->
+                <div class="alert alert-success mb0 mt10 x-hidden" role="alert"></div>
+                <!-- success -->
+
+                <!-- error -->
+                <div class="alert alert-danger mb0 mt10 x-hidden" role="alert"></div>
+                <!-- error -->
+            </form>
         </div>
     {elseif $sub_view == "edit"}
         <div class="panel-body">
