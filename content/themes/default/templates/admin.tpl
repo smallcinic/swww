@@ -180,7 +180,7 @@
 			        <ul>
 				    <li {if $view == "model" && $sub_view == ""}class="active"{/if} {if $view == "model" && $sub_view == "add_model"}class="active"{/if}>
 				        <a href="{$system['system_url']}/admincp/model">
-				            <i class="fa fa-caret-right fa-fw pr10"></i>{__("List Modela")}
+				            <i class="fa fa-caret-right fa-fw pr10"></i>{__("List Models")}
 				        </a>
 				    </li>
 				    <li {if $view == "model" && $sub_view == "map"}class="active"{/if} {if $view == "model" && $sub_view == "add_map"}class="active"{/if}>

@@ -12,6 +12,7 @@ $override_shutdown = true;
 // fetch bootstrap
 require('bootstrap.php');
 
+
 // user access
 user_access();
 
@@ -420,6 +421,12 @@ try {
 					// page header
 					page_header(__("Admin")." &rsaquo; ".__("Users")." &rsaquo; ".$data['user_firstname']." ".$data['user_lastname']);
 					break;
+
+
+                case 'add_user':
+                    // page header
+                    page_header(__("Admin")." &rsaquo; ".__("Users")." &rsaquo; ".__("Add New"));
+                    break;
 
 				default:
 					_error(404);
@@ -1481,7 +1488,7 @@ try {
 				case 'users':
 					// page header
 					page_header(__("Admin")." &rsaquo; ".__("Verification")." &rsaquo; ".__("Verified Users"));
-					
+
 					// get data
 					$get_rows = $db->query("SELECT * FROM users WHERE user_verified = '1'") or _error(SQL_ERROR);
 					if($get_rows->num_rows > 0) {

@@ -1,0 +1,5 @@
+content/themes/default/cache/*
+!content/themes/default/templates_compiled/.gitkeep
+content/themes/default/templates_compiled/*
+!content/themes/default/cache/index.html
+.idea
