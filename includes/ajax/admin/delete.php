@@ -53,8 +53,12 @@ try {
 			$db->query(sprintf("UPDATE users SET user_subscribed = '0', user_package = null, user_subscription_date = null, user_boosted_posts = '0', user_boosted_pages = '0' WHERE user_id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
 			break;
 
-		 case 'model':
+		case 'model':
 			 $db->query(sprintf("DELETE FROM model WHERE id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
+			 break;
+			 
+	    case 'device':
+			 $db->query(sprintf("DELETE FROM models_device WHERE id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
 			 break;
 
 		case 'model_map':

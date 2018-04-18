@@ -155,7 +155,7 @@ CREATE TABLE `conversations` (
   `conversation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `last_message_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`conversation_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `conversations` (
 
 LOCK TABLES `conversations` WRITE;
 /*!40000 ALTER TABLE `conversations` DISABLE KEYS */;
-INSERT INTO `conversations` VALUES (1,8),(2,4),(3,5);
+INSERT INTO `conversations` VALUES (1,19),(2,4),(3,5),(4,36);
 /*!40000 ALTER TABLE `conversations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +183,7 @@ CREATE TABLE `conversations_messages` (
   `image` varchar(255) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +192,7 @@ CREATE TABLE `conversations_messages` (
 
 LOCK TABLES `conversations_messages` WRITE;
 /*!40000 ALTER TABLE `conversations_messages` DISABLE KEYS */;
-INSERT INTO `conversations_messages` VALUES (1,1,1,'test\\','','2017-12-28 12:47:47'),(2,1,1,'vfrhejw','','2017-12-28 12:48:13'),(3,2,3,'Что за хуйня','','2017-12-30 00:35:53'),(4,2,3,'Все плохо','','2017-12-30 00:36:05'),(5,3,3,'Жопа','','2017-12-30 00:39:30'),(6,1,2,'[eq','','2018-02-24 12:47:24'),(7,1,2,'хуй я сказал!','','2018-02-24 12:47:36'),(8,1,2,'Я сказал - хуууй!','','2018-02-24 12:48:55');
+INSERT INTO `conversations_messages` VALUES (1,1,1,'test\\','','2017-12-28 12:47:47'),(2,1,1,'vfrhejw','','2017-12-28 12:48:13'),(3,2,3,'Что за хуйня','','2017-12-30 00:35:53'),(4,2,3,'Все плохо','','2017-12-30 00:36:05'),(5,3,3,'Жопа','','2017-12-30 00:39:30'),(6,1,2,'[eq','','2018-02-24 12:47:24'),(7,1,2,'хуй я сказал!','','2018-02-24 12:47:36'),(8,1,2,'Я сказал - хуууй!','','2018-02-24 12:48:55'),(9,1,2,'test','','2018-04-15 20:16:11'),(10,1,2,'test','','2018-04-15 20:16:38'),(11,1,2,'ororo','','2018-04-15 20:17:06'),(12,1,1,'Test','','2018-04-15 20:17:26'),(13,1,2,'test','','2018-04-15 20:17:39'),(14,1,1,'Test','','2018-04-15 21:12:38'),(15,1,1,'Qqq','','2018-04-15 21:13:52'),(16,1,1,'Qqq','','2018-04-15 21:14:10'),(17,1,2,'qqq','','2018-04-15 21:14:39'),(18,1,2,'test','','2018-04-15 21:15:41'),(19,1,1,'Test','','2018-04-15 21:17:13'),(20,4,4,'hi','','2018-04-15 21:20:02'),(21,4,1,'Hello','','2018-04-15 21:20:24'),(22,4,4,'iufcreoi','','2018-04-15 21:20:36'),(23,4,4,'jrfb erhf e','','2018-04-15 21:20:42'),(24,4,4,'  efu eufvh uef efn','','2018-04-15 21:20:47'),(25,4,4,'ghf tfiuy oy','','2018-04-15 21:21:08'),(26,4,4,'nbcjhvv uyho nuho \n','','2018-04-15 21:21:20'),(27,4,4,'vfiuyf','','2018-04-15 21:21:53'),(28,4,4,'uy rfyf uyf i','','2018-04-15 21:22:00'),(29,4,4,'iulg oyu g\\','','2018-04-15 21:22:06'),(30,4,4,';.;ub ihj j','','2018-04-15 21:22:10'),(31,4,4,'jhhvjhv','','2018-04-15 21:23:02'),(32,4,4,'hvipyvuh j ih \\n j  j','','2018-04-15 21:23:08'),(33,4,4,'hbvojhvojhv','','2018-04-15 21:23:15'),(34,4,4,'jhviugv','','2018-04-15 21:23:23'),(35,4,4,'hg ifu gfyt vvuytg u','','2018-04-15 21:23:28'),(36,4,4,'ukyf ituf iuyfi uy\\','','2018-04-15 21:24:18');
 /*!40000 ALTER TABLE `conversations_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +218,7 @@ CREATE TABLE `conversations_users` (
 
 LOCK TABLES `conversations_users` WRITE;
 /*!40000 ALTER TABLE `conversations_users` DISABLE KEYS */;
-INSERT INTO `conversations_users` VALUES (1,1,'0','1'),(1,2,'1','0'),(2,3,'1','0'),(2,1,'1','0'),(3,3,'1','1'),(3,2,'1','0');
+INSERT INTO `conversations_users` VALUES (1,1,'0','1'),(1,2,'1','0'),(2,3,'1','0'),(2,1,'1','0'),(3,3,'1','1'),(3,2,'1','0'),(4,4,'1','0'),(4,1,'1','0');
 /*!40000 ALTER TABLE `conversations_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,7 +531,7 @@ CREATE TABLE `followings` (
 
 LOCK TABLES `followings` WRITE;
 /*!40000 ALTER TABLE `followings` DISABLE KEYS */;
-INSERT INTO `followings` VALUES (1,2),(3,4);
+INSERT INTO `followings` VALUES (1,2),(1,4),(2,1),(3,4),(4,1),(4,2);
 /*!40000 ALTER TABLE `followings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -549,7 +549,7 @@ CREATE TABLE `friends` (
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_one_id_user_two_id` (`user_one_id`,`user_two_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -558,7 +558,7 @@ CREATE TABLE `friends` (
 
 LOCK TABLES `friends` WRITE;
 /*!40000 ALTER TABLE `friends` DISABLE KEYS */;
-INSERT INTO `friends` VALUES (3,1,2,0),(2,3,4,0);
+INSERT INTO `friends` VALUES (3,1,2,1),(2,3,4,0),(5,4,1,1),(6,4,2,0);
 /*!40000 ALTER TABLE `friends` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -824,7 +824,7 @@ CREATE TABLE `model` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'permission id',
   `name` varchar(64) NOT NULL COMMENT 'permission group name',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -833,7 +833,7 @@ CREATE TABLE `model` (
 
 LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
-INSERT INTO `model` VALUES (15,'Database'),(16,'Research'),(17,'Technics'),(19,'Medicine'),(20,'Hacking'),(21,'Battle'),(22,'Root');
+INSERT INTO `model` VALUES (0,'new'),(15,'Database'),(16,'research'),(17,'tech'),(19,'medic'),(20,'Hacking'),(21,'self'),(22,'Root');
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -864,6 +864,32 @@ INSERT INTO `model_map` VALUES (25,1,15),(26,1,16),(27,1,17),(29,1,19),(30,1,20)
 UNLOCK TABLES;
 
 --
+-- Table structure for table `models_device`
+--
+
+DROP TABLE IF EXISTS `models_device`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `models_device` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `server_id` int(11) NOT NULL,
+  `backup` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `models_device`
+--
+
+LOCK TABLES `models_device` WRITE;
+/*!40000 ALTER TABLE `models_device` DISABLE KEYS */;
+INSERT INTO `models_device` VALUES (0,'addtest',8,NULL);
+/*!40000 ALTER TABLE `models_device` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `models_rfid`
 --
 
@@ -885,7 +911,7 @@ CREATE TABLE `models_rfid` (
 
 LOCK TABLES `models_rfid` WRITE;
 /*!40000 ALTER TABLE `models_rfid` DISABLE KEYS */;
-INSERT INTO `models_rfid` VALUES (7,'1039485010',9,5);
+INSERT INTO `models_rfid` VALUES (7,'1039485010',15,18);
 /*!40000 ALTER TABLE `models_rfid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -907,7 +933,7 @@ CREATE TABLE `notifications` (
   `time` datetime DEFAULT NULL,
   `seen` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`notification_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -916,7 +942,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (1,1,3,'friend_add','','Jopa','','2017-12-30 00:29:29','1'),(2,1,3,'follow','','','','2017-12-30 00:29:29','1'),(3,4,3,'friend_add','','Jopa','','2017-12-30 00:29:34','1'),(4,4,3,'follow','','','','2017-12-30 00:29:34','1'),(5,3,1,'friend_accept','','cinic','','2018-01-24 18:25:51','0'),(7,2,1,'friend_add','','cinic','','2018-02-26 19:06:50','0'),(8,2,1,'follow','','','','2018-02-26 19:06:50','0'),(9,3,1,'friend_add','','cinic','','2018-03-05 16:29:50','0'),(11,3,1,'like','post','7','','2018-03-05 17:41:16','0'),(13,3,1,'like','post','8','','2018-03-05 19:18:39','0');
+INSERT INTO `notifications` VALUES (1,1,3,'friend_add','','Jopa','','2017-12-30 00:29:29','1'),(2,1,3,'follow','','','','2017-12-30 00:29:29','1'),(3,4,3,'friend_add','','Jopa','','2017-12-30 00:29:34','1'),(4,4,3,'follow','','','','2017-12-30 00:29:34','1'),(5,3,1,'friend_accept','','cinic','','2018-01-24 18:25:51','0'),(7,2,1,'friend_add','','cinic','','2018-02-26 19:06:50','0'),(8,2,1,'follow','','','','2018-02-26 19:06:50','0'),(9,3,1,'friend_add','','cinic','','2018-03-05 16:29:50','0'),(11,3,1,'like','post','7','','2018-03-05 17:41:16','0'),(14,1,2,'friend_accept','','test','','2018-04-15 21:13:22','1'),(13,3,1,'like','post','8','','2018-03-05 19:18:39','0'),(15,1,2,'follow','','','','2018-04-15 21:13:22','1'),(16,1,4,'friend_add','','Ttt','','2018-04-15 21:19:30','1'),(17,1,4,'follow','','','','2018-04-15 21:19:30','1'),(18,2,4,'friend_add','','Ttt','','2018-04-15 21:19:32','0'),(19,2,4,'follow','','','','2018-04-15 21:19:32','0'),(20,4,1,'friend_accept','','cinic','','2018-04-15 21:19:37','1'),(21,4,1,'follow','','','','2018-04-15 21:19:37','1');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1120,7 +1146,7 @@ CREATE TABLE `posts` (
   `comments` int(10) unsigned NOT NULL DEFAULT '0',
   `shares` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1129,7 +1155,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,1,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2017-12-26 19:30:15',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(3,2,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2017-12-27 15:03:15',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(22,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2018-03-05 20:10:22',NULL,'me',NULL,NULL,NULL,'0',0,0,0),(5,1,'page','0',0,'0',0,'0',0,'',NULL,'2017-12-27 17:06:35','','public','vtgrertgre','','','0',1,0,1),(7,3,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2017-12-30 00:28:35',NULL,'public',NULL,NULL,NULL,'0',1,0,0),(8,3,'user','0',0,'0',0,'0',0,'',NULL,'2017-12-30 00:31:04','','public','Что тут вообще происходит? :cold_sweat: ','Looking For','Глубокий поиск смысла','0',1,0,0),(9,3,'user','0',0,'0',0,'0',0,'',NULL,'2017-12-30 00:31:42','','public','Уруру','','','0',0,0,0),(10,1,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2018-02-02 17:43:31',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(11,2,'page','0',0,'0',0,'0',0,'video',NULL,'2018-02-02 17:44:16','','public','','','','0',0,0,0),(21,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2018-03-05 20:10:18',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(12,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:09:18','','public','','','','0',0,0,0),(13,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:11:31','','public','','','','0',1,0,0),(14,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:12:08','','public','','','','0',0,0,0),(15,1,'user','0',0,'0',0,'0',0,'album',NULL,'2018-03-05 17:12:34','','public','','','','0',0,0,0),(16,1,'user','0',0,'0',0,'0',NULL,'album',NULL,'2018-03-05 17:12:59','','friends','',NULL,NULL,'0',1,0,0),(20,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_cover',NULL,'2018-03-05 20:09:40',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(17,1,'page','0',0,'0',0,'0',0,'',NULL,'2018-03-05 19:47:59','','public','111','','','0',0,0,0),(18,1,'page','0',0,'0',0,'0',0,'album',NULL,'2018-03-05 19:48:22','','public','','','','0',0,0,0),(25,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_cover',NULL,'2018-03-05 20:11:45',NULL,'me',NULL,NULL,NULL,'0',0,0,0);
+INSERT INTO `posts` VALUES (1,1,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2017-12-26 19:30:15',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(3,2,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2017-12-27 15:03:15',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(22,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2018-03-05 20:10:22',NULL,'me',NULL,NULL,NULL,'0',0,0,0),(5,1,'page','0',0,'0',0,'0',0,'',NULL,'2017-12-27 17:06:35','','public','vtgrertgre','','','0',1,0,1),(7,3,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2017-12-30 00:28:35',NULL,'public',NULL,NULL,NULL,'0',1,0,0),(8,3,'user','0',0,'0',0,'0',0,'',NULL,'2017-12-30 00:31:04','','public','Что тут вообще происходит? :cold_sweat: ','Looking For','Глубокий поиск смысла','0',1,0,0),(9,3,'user','0',0,'0',0,'0',0,'',NULL,'2017-12-30 00:31:42','','public','Уруру','','','0',0,0,0),(10,1,'user','0',NULL,'0',NULL,'0',NULL,'article',NULL,'2018-02-02 17:43:31',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(11,2,'page','0',0,'0',0,'0',0,'video',NULL,'2018-02-02 17:44:16','','public','','','','0',0,0,0),(21,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_picture',NULL,'2018-03-05 20:10:18',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(12,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:09:18','','public','','','','0',0,0,0),(13,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:11:31','','public','','','','0',1,0,0),(14,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-03-05 17:12:08','','public','','','','0',0,0,0),(15,1,'user','0',0,'0',0,'0',0,'album',NULL,'2018-03-05 17:12:34','','public','','','','0',0,0,0),(16,1,'user','0',0,'0',0,'0',NULL,'album',NULL,'2018-03-05 17:12:59','','friends','',NULL,NULL,'0',1,0,0),(20,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_cover',NULL,'2018-03-05 20:09:40',NULL,'public',NULL,NULL,NULL,'0',0,0,0),(17,1,'page','0',0,'0',0,'0',0,'',NULL,'2018-03-05 19:47:59','','public','111','','','0',0,0,0),(18,1,'page','0',0,'0',0,'0',0,'album',NULL,'2018-03-05 19:48:22','','public','','','','0',0,0,0),(25,1,'user','0',NULL,'0',NULL,'0',NULL,'profile_cover',NULL,'2018-03-05 20:11:45',NULL,'me',NULL,NULL,NULL,'0',0,0,0),(26,1,'user','0',0,'0',0,'0',0,'photos',NULL,'2018-04-15 20:06:57','','public','','','','0',0,0,0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1158,7 +1184,7 @@ CREATE TABLE `posts_articles` (
 
 LOCK TABLES `posts_articles` WRITE;
 /*!40000 ALTER TABLE `posts_articles` DISABLE KEYS */;
-INSERT INTO `posts_articles` VALUES (1,1,'','Добавляем permissions в админку','&lt;p&gt;В данном случае на примере добавления permissions - прав пользователей для доступа к другим моделькам.&lt;/p&gt;\r\n&lt;p&gt;0) Создаём таблицу в базе:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt;CREATE TABLE permissions (&lt;br /&gt; permission_id int(10) NOT NULL AUTO_INCREMENT COMMENT &#039;permission id&#039;,&lt;br /&gt; permission_name varchar(64) NOT NULL COMMENT &#039;permission group name&#039;,&lt;br /&gt;PRIMARY KEY (permission_id)&lt;br /&gt;) ENGINE=InnoDB DEFAULT CHARSET=utf8;&lt;/pre&gt;\r\n&lt;p&gt;1) Добавить раздел в admin.php. Не забываем про всякие edit - для них тоже нужны ссылки. В нашем случае у нас будут базовый раздел со списком, страница добавления и страница редактирования.&lt;/p&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;permissions&#039;:&lt;br /&gt; // get content&lt;br /&gt; switch ($_GET[&#039;sub_view&#039;]) {&lt;br /&gt; case &#039;&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;));&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_rows = $db-&amp;gt;query(&quot;SELECT * FROM permissions&quot;) or _error(SQL_ERROR);&lt;br /&gt; if($get_rows-&amp;gt;num_rows &amp;gt; 0) {&lt;br /&gt; while($row = $get_rows-&amp;gt;fetch_assoc()) {&lt;br /&gt; $rows[] = $row;&lt;br /&gt; }&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;rows&#039;, $rows);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;edit_permission&#039;:&lt;br /&gt; if(!isset($_GET[&#039;id&#039;]) || !is_numeric($_GET[&#039;id&#039;])) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_data = $db-&amp;gt;query(sprintf(&quot;SELECT * FROM permissions WHERE permission_id = %s&quot;, secure($_GET[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR);&lt;br /&gt; if($get_data-&amp;gt;num_rows == 0) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;br /&gt; $data = $get_data-&amp;gt;fetch_assoc();&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;data&#039;, $data);&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.$data[&#039;permission_name&#039;]);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;add_permission&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Add New&quot;));&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;default:&lt;br /&gt; _error(404);&lt;br /&gt; break;&lt;br /&gt; }&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p&gt;2) Добавляем в меню - правим content/themes/default/templates/admin.tpl :&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;lt;li {if $view == &quot;permissions&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot; class=&quot;no-border&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-desktop fa-fw fa-lg pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Permissions&quot;)}&lt;br /&gt; &amp;lt;span class=&quot;fa arrow&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;ul&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;List Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;add&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions/add_permission&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Add New Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;/ul&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;/p&gt;\r\n&lt;p&gt;3) создаём шаблон страницы админки в теме - у нас это будет content/themes/default/templates/admin.permissions.tpl и правим как нам надо.&lt;/p&gt;\r\n&lt;p&gt;4) создаём скрипт ./includes/ajax/admin/permissions.php - на него в шаблоне&amp;nbsp;admin.permissions.tpl ведут все запросы.&lt;/p&gt;\r\n&lt;p&gt;5) для кнопки удаления из&amp;nbsp;admin.permissions.tpl не забываем добавить условие в includes/ajax/admin/delete.php:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt; case &#039;permissions&#039;:&lt;br /&gt; $db-&amp;gt;query(sprintf(&quot;DELETE FROM permissions WHERE permission_id = %s&quot;, secure($_POST[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR_THROWEN);&lt;br /&gt; break;&lt;/pre&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;На этом всё - раздел добавлен и мы можем добавлять, удалять и переименовывать группы прав. Основное всё, конечно, запихнуто в шаблон и php скрипт.&lt;/p&gt;','',56),(2,2,'','vkfhjvgjeh','&lt;p&gt;cvrfevsretfvg&lt;/p&gt;','',23),(3,3,'','tests fhjgfchewv','&lt;p&gt;test&lt;/p&gt;','',47),(4,4,'','page blog','&lt;p&gt;vhgfbkjhe&lt;/p&gt;','',8),(5,10,'photos/2018/02/sngine_fce2e944f73889d8d91c7e42153582fb.jpg','test page blog','&lt;p&gt;subj&lt;/p&gt;','',41),(6,19,'','11111','&lt;p&gt;111111111&lt;/p&gt;','',1);
+INSERT INTO `posts_articles` VALUES (1,1,'','Добавляем permissions в админку','&lt;p&gt;В данном случае на примере добавления permissions - прав пользователей для доступа к другим моделькам.&lt;/p&gt;\r\n&lt;p&gt;0) Создаём таблицу в базе:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt;CREATE TABLE permissions (&lt;br /&gt; permission_id int(10) NOT NULL AUTO_INCREMENT COMMENT &#039;permission id&#039;,&lt;br /&gt; permission_name varchar(64) NOT NULL COMMENT &#039;permission group name&#039;,&lt;br /&gt;PRIMARY KEY (permission_id)&lt;br /&gt;) ENGINE=InnoDB DEFAULT CHARSET=utf8;&lt;/pre&gt;\r\n&lt;p&gt;1) Добавить раздел в admin.php. Не забываем про всякие edit - для них тоже нужны ссылки. В нашем случае у нас будут базовый раздел со списком, страница добавления и страница редактирования.&lt;/p&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;permissions&#039;:&lt;br /&gt; // get content&lt;br /&gt; switch ($_GET[&#039;sub_view&#039;]) {&lt;br /&gt; case &#039;&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;));&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_rows = $db-&amp;gt;query(&quot;SELECT * FROM permissions&quot;) or _error(SQL_ERROR);&lt;br /&gt; if($get_rows-&amp;gt;num_rows &amp;gt; 0) {&lt;br /&gt; while($row = $get_rows-&amp;gt;fetch_assoc()) {&lt;br /&gt; $rows[] = $row;&lt;br /&gt; }&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;rows&#039;, $rows);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;edit_permission&#039;:&lt;br /&gt; if(!isset($_GET[&#039;id&#039;]) || !is_numeric($_GET[&#039;id&#039;])) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_data = $db-&amp;gt;query(sprintf(&quot;SELECT * FROM permissions WHERE permission_id = %s&quot;, secure($_GET[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR);&lt;br /&gt; if($get_data-&amp;gt;num_rows == 0) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;br /&gt; $data = $get_data-&amp;gt;fetch_assoc();&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;data&#039;, $data);&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.$data[&#039;permission_name&#039;]);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;add_permission&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Add New&quot;));&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;default:&lt;br /&gt; _error(404);&lt;br /&gt; break;&lt;br /&gt; }&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p&gt;2) Добавляем в меню - правим content/themes/default/templates/admin.tpl :&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;lt;li {if $view == &quot;permissions&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot; class=&quot;no-border&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-desktop fa-fw fa-lg pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Permissions&quot;)}&lt;br /&gt; &amp;lt;span class=&quot;fa arrow&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;ul&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;List Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;add&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions/add_permission&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Add New Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;/ul&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;/p&gt;\r\n&lt;p&gt;3) создаём шаблон страницы админки в теме - у нас это будет content/themes/default/templates/admin.permissions.tpl и правим как нам надо.&lt;/p&gt;\r\n&lt;p&gt;4) создаём скрипт ./includes/ajax/admin/permissions.php - на него в шаблоне&amp;nbsp;admin.permissions.tpl ведут все запросы.&lt;/p&gt;\r\n&lt;p&gt;5) для кнопки удаления из&amp;nbsp;admin.permissions.tpl не забываем добавить условие в includes/ajax/admin/delete.php:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt; case &#039;permissions&#039;:&lt;br /&gt; $db-&amp;gt;query(sprintf(&quot;DELETE FROM permissions WHERE permission_id = %s&quot;, secure($_POST[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR_THROWEN);&lt;br /&gt; break;&lt;/pre&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;На этом всё - раздел добавлен и мы можем добавлять, удалять и переименовывать группы прав. Основное всё, конечно, запихнуто в шаблон и php скрипт.&lt;/p&gt;','',56),(2,2,'','vkfhjvgjeh','&lt;p&gt;cvrfevsretfvg&lt;/p&gt;','',23),(3,3,'','tests fhjgfchewv','&lt;p&gt;test&lt;/p&gt;','',54),(4,4,'','page blog','&lt;p&gt;vhgfbkjhe&lt;/p&gt;','',8),(5,10,'photos/2018/02/sngine_fce2e944f73889d8d91c7e42153582fb.jpg','test page blog','&lt;p&gt;subj&lt;/p&gt;','',41),(6,19,'','11111','&lt;p&gt;111111111&lt;/p&gt;','',1);
 /*!40000 ALTER TABLE `posts_articles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1385,7 +1411,7 @@ CREATE TABLE `posts_photos` (
   `likes` int(10) unsigned NOT NULL DEFAULT '0',
   `comments` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`photo_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1394,7 +1420,7 @@ CREATE TABLE `posts_photos` (
 
 LOCK TABLES `posts_photos` WRITE;
 /*!40000 ALTER TABLE `posts_photos` DISABLE KEYS */;
-INSERT INTO `posts_photos` VALUES (1,7,1,'photos/2017/12/sngine_24cc98018fce97dd448951c361d59c70.jpg',0,0),(2,12,2,'photos/2018/03/sngine_a04dba48da1987cf578334ca046770b0.png',1,0),(3,12,2,'photos/2018/03/sngine_df53f29c2b89e4e4d2c6b68a2e439697.png',0,0),(4,13,2,'photos/2018/03/sngine_3182cc796eb7c98737454fee9182fcc4.jpg',0,0),(5,13,2,'photos/2018/03/sngine_cb33b844d8a4c3e9db3e5a14261f577a.jpg',1,0),(6,14,2,'photos/2018/03/sngine_f6fff79258d09ba9aa2e06472f314d5f.jpg',0,0),(7,14,2,'photos/2018/03/sngine_e3c17bbfd527c71752992577d12600ca.jpg',0,0),(8,14,2,'photos/2018/03/sngine_d643036a5359e18c7a5498929a5b7bb0.jpg',0,0),(9,15,3,'photos/2018/03/sngine_6c7ca02ced998f5bc35752bf24c5d056.jpg',0,0),(10,16,3,'photos/2018/03/sngine_91f52255707779320e94c305b62cbdd8.gif',0,0),(11,18,4,'photos/2018/03/sngine_7bf3a51c840791bacd8a829e37d91792.gif',0,0),(14,22,6,'photos/2018/03/sngine_ee42ca6af2a8fe97cde541c680803947.gif',0,0),(17,25,5,'photos/2018/03/sngine_ab277a7930373d851950f698dd762549.jpg',0,0);
+INSERT INTO `posts_photos` VALUES (1,7,1,'photos/2017/12/sngine_24cc98018fce97dd448951c361d59c70.jpg',0,0),(2,12,2,'photos/2018/03/sngine_a04dba48da1987cf578334ca046770b0.png',1,0),(3,12,2,'photos/2018/03/sngine_df53f29c2b89e4e4d2c6b68a2e439697.png',0,0),(4,13,2,'photos/2018/03/sngine_3182cc796eb7c98737454fee9182fcc4.jpg',0,0),(5,13,2,'photos/2018/03/sngine_cb33b844d8a4c3e9db3e5a14261f577a.jpg',1,0),(6,14,2,'photos/2018/03/sngine_f6fff79258d09ba9aa2e06472f314d5f.jpg',0,0),(7,14,2,'photos/2018/03/sngine_e3c17bbfd527c71752992577d12600ca.jpg',0,0),(8,14,2,'photos/2018/03/sngine_d643036a5359e18c7a5498929a5b7bb0.jpg',0,0),(9,15,3,'photos/2018/03/sngine_6c7ca02ced998f5bc35752bf24c5d056.jpg',0,0),(10,16,3,'photos/2018/03/sngine_91f52255707779320e94c305b62cbdd8.gif',0,0),(11,18,4,'photos/2018/03/sngine_7bf3a51c840791bacd8a829e37d91792.gif',0,0),(18,26,2,'photos/2018/04/sngine_d4970f267648f083f07284d67c629f77.jpg',0,0),(14,22,6,'photos/2018/03/sngine_ee42ca6af2a8fe97cde541c680803947.gif',0,0),(17,25,5,'photos/2018/03/sngine_ab277a7930373d851950f698dd762549.jpg',0,0);
 /*!40000 ALTER TABLE `posts_photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2041,7 +2067,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `vkontakte_id` (`vkontakte_id`),
   UNIQUE KEY `instagram_id` (`instagram_id`),
   UNIQUE KEY `user_phone` (`user_phone`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2050,7 +2076,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'cinic','cinic@hplus.su',NULL,'$2y$10$GpUnREGAcGYU/7IXkmRKluTiTKfUevDmPd.GLNwHqBDuYytfoxsO.','1',NULL,'0',NULL,'0',NULL,NULL,0,0,'1','1','0',0,0,0,8,0,0,'cinic',NULL,'male','photos/2018/03/sngine_ee42ca6af2a8fe97cde541c680803947.gif',14,'photos/2018/03/sngine_ab277a7930373d851950f698dd762549.jpg',17,6,5,2,NULL,'2017-12-20 16:19:24','2018-04-02 20:56:19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(2,1,'test','test@hplus.su',NULL,'$2y$10$jYV7hmn2AJZr8q60YpUlwOa73c0I2a7F4K1FSLdt4iX/fvaTjlWsW','1','6bab3a2f35e155d8b48daeba33298f62','0',NULL,'0',NULL,NULL,0,0,'1','1','0',1,0,3,8,2,0,'Test','Test','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-12-27 15:02:24','2018-04-02 20:56:19',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(3,3,'Jopa','lyth@mailinator.com',NULL,'$2y$10$.A36AiUg0rfGqt7jyTKIL.0Dq2T6pc92oav4f8lGOsdafBy0O5CL6','1','2cdc298cc542ac70fd620a2f0bd0dd87','0',NULL,'0',NULL,NULL,0,0,'1','0','0',0,0,0,5,3,0,'Strega','Lyth','female','photos/2017/12/sngine_24cc98018fce97dd448951c361d59c70.jpg',1,NULL,NULL,1,NULL,NULL,NULL,'2017-12-30 00:09:39','2018-01-02 15:08:29',NULL,NULL,NULL,NULL,'Смерть','Жопа','Spb','1983','Сатана','Пизданога','Ногапизда',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(4,3,'Ttt','ttttttt@mailinator.com',NULL,'$2y$10$TB6K7y.CbyqtAKl7mCvHAe7PsGlmdphHKSXeBsvDn4G7ANeEUhJza','1','f1921411d05d4a69959ef94bb5b8554f','0',NULL,'0',NULL,NULL,0,0,'0','0','0',0,0,0,0,0,0,'Tester','Tester','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-12-30 00:13:21','2018-03-26 12:29:47',NULL,NULL,NULL,NULL,'Christmas Tree','Main Square','Maputu','Maputu','Very high','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(5,3,'Alex','levius@rambler.ru',NULL,'$2y$10$JRLadu4X/NxdxReKydlM/ut5wDhTI2nljQUgDkTSP5.MNHCslIp86','0','824f0312c23200a32fa3c7c94cbf5a37','0',NULL,'0',NULL,NULL,0,0,'1','0','0',0,0,0,0,0,0,'Alex','Road','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-03-05 19:46:30','2018-04-02 20:55:20',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1');
+INSERT INTO `users` VALUES (1,1,'cinic','cinic@hplus.su',NULL,'$2y$10$GpUnREGAcGYU/7IXkmRKluTiTKfUevDmPd.GLNwHqBDuYytfoxsO.','1',NULL,'0',NULL,'0',NULL,NULL,0,0,'1','1','0',0,0,0,36,0,0,'cinic',NULL,'male','photos/2018/03/sngine_ee42ca6af2a8fe97cde541c680803947.gif',14,'photos/2018/03/sngine_ab277a7930373d851950f698dd762549.jpg',17,6,5,2,NULL,'2017-12-20 16:19:24','2018-04-17 12:19:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(2,1,'test','test@hplus.su',NULL,'$2y$10$jYV7hmn2AJZr8q60YpUlwOa73c0I2a7F4K1FSLdt4iX/fvaTjlWsW','1','6bab3a2f35e155d8b48daeba33298f62','0',NULL,'0',NULL,NULL,0,0,'1','1','0',1,0,0,18,4,0,'Test','Test','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-12-27 15:02:24','2018-04-15 21:18:02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(3,3,'Jopa','lyth@mailinator.com',NULL,'$2y$10$.A36AiUg0rfGqt7jyTKIL.0Dq2T6pc92oav4f8lGOsdafBy0O5CL6','1','2cdc298cc542ac70fd620a2f0bd0dd87','0',NULL,'0',NULL,NULL,0,0,'1','0','0',0,0,0,5,3,0,'Strega','Lyth','female','photos/2017/12/sngine_24cc98018fce97dd448951c361d59c70.jpg',1,NULL,NULL,1,NULL,NULL,NULL,'2017-12-30 00:09:39','2018-01-02 15:08:29',NULL,NULL,NULL,NULL,'Смерть','Жопа','Spb','1983','Сатана','Пизданога','Ногапизда',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(4,3,'Ttt','ttttttt@mailinator.com',NULL,'$2y$10$gPHpKpETgs61SJUw5o5LFekuQIM2YI7dFxsTkJJSea9tlH7DrRMG2','1','f1921411d05d4a69959ef94bb5b8554f','0',NULL,'0',NULL,NULL,0,0,'1','0','0',0,0,1,36,0,0,'Tester','Tester','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-12-30 00:13:21','2018-04-15 21:44:00',NULL,NULL,NULL,NULL,'Christmas Tree','Main Square','Maputu','Maputu','Very high','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(5,3,'Alex','levius@rambler.ru',NULL,'$2y$10$JRLadu4X/NxdxReKydlM/ut5wDhTI2nljQUgDkTSP5.MNHCslIp86','0','824f0312c23200a32fa3c7c94cbf5a37','0',NULL,'0',NULL,NULL,0,0,'1','0','0',0,0,0,0,0,0,'Alex','Road','male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-03-05 19:46:30','2018-04-18 00:56:56',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1'),(6,3,'ololosh','5e5beaa0b582cb930b16',NULL,'$2y$10$Xs//wVCsoGv/feMecJCOle96X.vOIotEtJu1D76ZmkUAFDAXcUIS6','1',NULL,'0',NULL,'0',NULL,NULL,0,0,'0','1','0',0,0,0,0,0,0,'',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-04-15 21:50:04',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','friends','public','public','public','public','public','public','public','public','public','public','public','public','1','1','1','1','1','1','1','0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,'0',NULL,NULL,'0','1');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2122,7 +2148,7 @@ CREATE TABLE `users_online` (
 
 LOCK TABLES `users_online` WRITE;
 /*!40000 ALTER TABLE `users_online` DISABLE KEYS */;
-INSERT INTO `users_online` VALUES (2,'2018-04-02 20:56:23');
+INSERT INTO `users_online` VALUES (1,'2018-04-18 04:13:30');
 /*!40000 ALTER TABLE `users_online` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2195,7 +2221,7 @@ CREATE TABLE `users_sessions` (
   PRIMARY KEY (`session_id`),
   UNIQUE KEY `session_token` (`session_token`),
   KEY `user_ip` (`user_ip`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2204,7 +2230,7 @@ CREATE TABLE `users_sessions` (
 
 LOCK TABLES `users_sessions` WRITE;
 /*!40000 ALTER TABLE `users_sessions` DISABLE KEYS */;
-INSERT INTO `users_sessions` VALUES (1,'c74f32d68df124c0663fd28bf63ad271','2017-12-20 16:28:50',1,'Chrome','Windows 10','192.168.1.20'),(3,'bccd877f99683f04bea1963d124bdee7','2017-12-27 13:01:52',1,'Chrome','Windows 10','192.168.1.20'),(4,'2b90176f29b99cb34acc0bbec8029c86','2017-12-27 15:02:24',2,'Chrome','Windows 10','192.168.1.20'),(5,'6296dd159b0a24faadd4e9b2c8e2753c','2017-12-28 12:49:01',1,'Handheld Browser','Android','192.168.1.20'),(6,'8dceee0a46ba29d1b9a02a25a7a53dc3','2017-12-30 00:09:39',3,'Handheld Browser','Android','192.168.1.20'),(7,'ffa404637ccc769d2940cb919bfa9a71','2017-12-30 00:13:21',4,'Handheld Browser','Android','192.168.1.20'),(8,'5bdfa278b8760c478b5c4e93b12d2e9b','2017-12-30 00:15:00',4,'Handheld Browser','Android','192.168.1.20'),(9,'f2f8548f704f854115e37524c390cb17','2017-12-30 00:26:09',3,'Handheld Browser','Android','192.168.1.20'),(12,'d31eea785cc47853dd341604bab4f476','2018-02-22 18:55:27',1,'Chrome','Windows 10','192.168.1.20'),(11,'b6fabed116cee41d77ce652faba7016f','2018-02-03 18:29:39',1,'Chrome','Windows 7','192.168.1.20'),(13,'e0a7d9c2ad90f65cfb611470d2d0125f','2018-02-24 12:33:18',1,'Chrome','Windows 7','192.168.1.20'),(14,'e69aa9a96e817d2e67223ca8d29fce48','2018-02-24 12:44:41',2,'Chrome','Windows 7','192.168.1.20'),(15,'19ab3dc058ec15c7b27c5d370e555779','2018-02-26 13:43:34',1,'Chrome','Windows 10','192.168.1.20'),(16,'82c8ec9a4189f039c11c6f929a41723e','2018-03-05 19:46:30',5,'Chrome','Windows 7','192.168.1.20'),(17,'bd0502c6482359063b5602d0fa760516','2018-03-16 14:40:58',1,'Chrome','Windows 10','192.168.1.20'),(19,'0be5b4a884cb1e787772013a420852a7','2018-04-02 20:56:19',2,'Chrome','Windows 7','192.168.1.20');
+INSERT INTO `users_sessions` VALUES (1,'c74f32d68df124c0663fd28bf63ad271','2017-12-20 16:28:50',1,'Chrome','Windows 10','192.168.1.20'),(3,'bccd877f99683f04bea1963d124bdee7','2017-12-27 13:01:52',1,'Chrome','Windows 10','192.168.1.20'),(4,'2b90176f29b99cb34acc0bbec8029c86','2017-12-27 15:02:24',2,'Chrome','Windows 10','192.168.1.20'),(5,'6296dd159b0a24faadd4e9b2c8e2753c','2017-12-28 12:49:01',1,'Handheld Browser','Android','192.168.1.20'),(6,'8dceee0a46ba29d1b9a02a25a7a53dc3','2017-12-30 00:09:39',3,'Handheld Browser','Android','192.168.1.20'),(7,'ffa404637ccc769d2940cb919bfa9a71','2017-12-30 00:13:21',4,'Handheld Browser','Android','192.168.1.20'),(8,'5bdfa278b8760c478b5c4e93b12d2e9b','2017-12-30 00:15:00',4,'Handheld Browser','Android','192.168.1.20'),(9,'f2f8548f704f854115e37524c390cb17','2017-12-30 00:26:09',3,'Handheld Browser','Android','192.168.1.20'),(12,'d31eea785cc47853dd341604bab4f476','2018-02-22 18:55:27',1,'Chrome','Windows 10','192.168.1.20'),(11,'b6fabed116cee41d77ce652faba7016f','2018-02-03 18:29:39',1,'Chrome','Windows 7','192.168.1.20'),(13,'e0a7d9c2ad90f65cfb611470d2d0125f','2018-02-24 12:33:18',1,'Chrome','Windows 7','192.168.1.20'),(14,'e69aa9a96e817d2e67223ca8d29fce48','2018-02-24 12:44:41',2,'Chrome','Windows 7','192.168.1.20'),(15,'19ab3dc058ec15c7b27c5d370e555779','2018-02-26 13:43:34',1,'Chrome','Windows 10','192.168.1.20'),(16,'82c8ec9a4189f039c11c6f929a41723e','2018-03-05 19:46:30',5,'Chrome','Windows 7','192.168.1.20'),(17,'bd0502c6482359063b5602d0fa760516','2018-03-16 14:40:58',1,'Chrome','Windows 10','192.168.1.20'),(19,'0be5b4a884cb1e787772013a420852a7','2018-04-02 20:56:19',2,'Chrome','Windows 7','192.168.1.20'),(20,'2d61f7e57baf81550d80f00970b4efd4','2018-04-04 16:18:03',1,'Chrome','Windows 10','192.168.1.20'),(21,'70296c128193a886e2534b26cf637d4e','2018-04-14 18:19:46',1,'Handheld Browser','Android','192.168.1.20'),(22,'c031fe7644abda1fae640198cb2a0ba5','2018-04-15 20:06:01',1,'Handheld Browser','Android','192.168.1.20'),(23,'41a1218d83c64150c59dafc8fac6cd5b','2018-04-15 20:15:13',1,'Handheld Browser','Android','192.168.1.20'),(26,'95f700d94dde2d9c60b02fcbfd4d4ef1','2018-04-15 21:43:56',1,'Chrome','Windows 7','192.168.1.20');
 /*!40000 ALTER TABLE `users_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2269,4 +2295,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-02 20:56:43
+-- Dump completed on 2018-04-18  5:47:35

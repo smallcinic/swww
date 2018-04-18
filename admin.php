@@ -516,6 +516,64 @@ try {
 
 					break;
 
+				case 'device':
+					// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Device"));
+
+					// get data
+					$get_rows = $db->query("SELECT models_device.id, models_device.name, models_device.server_id, db_server.name AS server_name FROM models_device LEFT JOIN db_server ON db_server.id=models_device.server_id") or _error(SQL_ERROR);
+					if($get_rows->num_rows > 0) {
+						while($row = $get_rows->fetch_assoc()) {
+						$rows[] = $row;
+						}
+					}
+
+					// assign variables
+					$smarty->assign('rows', $rows);
+					break;
+
+				case 'edit_device':
+					if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+						_error(404);
+					}
+
+					// get data
+					$get_data = $db->query(sprintf("SELECT models_device.id, models_device.name, models_device.server_id, db_server.name AS server_name FROM models_device LEFT JOIN db_server ON db_server.id=models_device.server_id WHERE models_device.id=%s", secure($_GET['id'], 'int') )) or _error(SQL_ERROR);
+					if($get_data->num_rows == 0) {
+						_error(404);
+					}
+					$data = $get_data->fetch_assoc();
+
+					$get_rows_server = $db->query("SELECT id, name FROM db_server") or _error(SQL_ERROR);
+					if($get_rows_server->num_rows > 0) {
+                                                while($row_server = $get_rows_server->fetch_assoc()) {
+                                                $rows_server[] = $row_server;
+                                                }
+                                        }
+
+					// assign variables
+					$smarty->assign('rows_server', $rows_server);
+					$smarty->assign('data', $data);
+
+					// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Device")." &rsaquo; ".$data['name']);
+					break;
+
+				case 'add_device':
+					$get_rows_server = $db->query("SELECT id, name FROM db_server") or _error(SQL_ERROR);
+					if($get_rows_server->num_rows > 0) {
+                                                while($row_server = $get_rows_server->fetch_assoc()) {
+                                                $rows_server[] = $row_server;
+                                                }
+                                        }
+
+					// assign variables
+					$smarty->assign('rows_server', $rows_server);
+
+				// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Add New"));
+					break;
+				
 				default:
 					_error(404);
 					break;

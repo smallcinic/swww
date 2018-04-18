@@ -57,20 +57,41 @@ try {
 			
 		case 'model':
 			switch ($_GET['query']) {
+				case 'tech':
+
+					break;
+
+				case 'medic':
+
+					break;
+
 				case 'research':
 					$get_research = $db->query(sprintf('SELECT * FROM model_rfid WHERE model = "research" AND rfid = %1$s', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
-                        		if($get_research->num_rows > 0) {
-		                                while($research = $get_research->fetch_assoc()) {
-                        	                print $research['text'];
-                                		}
-					} else {
-                                                $db->query(sprintf('INSERT INTO model_rfid (rfid, model, text) VALUES (%s, "research", "Lorem ipsum")', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
+                        if($get_research->num_rows > 0) {
+                            while($research = $get_research->fetch_assoc()) {
+                                print $research['text'];
+                            }
+                         } else {
+                            $db->query(sprintf('INSERT INTO model_rfid (rfid, model, text) VALUES (%s, "research", "Lorem ipsum")', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
+                            print "New RFID added";
+                        }
 
-						print "New RFID added";
-					}
-					exit;
 					break;
-		
+
+				case 'lock':
+                    //Проверка существования рфидок - для добавления новых
+					$check_rfid = $db->query(sprintf('SELECT * FROM models_rfid WHERE rfid = %1$s', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
+                    if($get_research->num_rows = 0) {
+                        $db->query(sprintf('INSERT INTO models_rfid (rfid, model_id, record_id) VALUES (%s, 0, 0)', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
+                        print "New RFID added";
+                    }
+				
+					break;
+
+				case 'self':
+
+					break;
+	
 				default:
 	        	                return_json( array('error' => true, 'message' => "Bad Request, not valid model type") );
         	        	        break;

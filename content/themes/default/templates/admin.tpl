@@ -188,6 +188,11 @@
                                             <i class="fa fa-caret-right fa-fw pr10"></i>{__("Models Map")}
                                         </a>
                                     </li>
+				    <li {if $view == "model" && $sub_view == "device"}class="active"{/if} {if $view == "model" && $sub_view == "add_device"}class="active"{/if} {if $view == "model" && $sub_view == "edit_device"}class="active"{/if}>
+				        <a href="{$system['system_url']}/admincp/model/device">
+				            <i class="fa fa-caret-right fa-fw pr10"></i>{__("Devices")}
+				        </a>
+				    </li>
 				</ul>
 			</li>
 			<!-- Models -->

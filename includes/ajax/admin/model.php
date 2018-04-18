@@ -48,6 +48,24 @@ try {
 			
 			break;
 
+		case 'add_device':
+			/* insert */
+			$db->query(sprintf("INSERT IGNORE INTO models_device (name, server_id) VALUES (%s,%s)", secure($_POST['name']), secure($_POST['server_id']) )) or _error(SQL_ERROR_THROWEN);
+                        /* return */
+                        return_json( array('success' => true, 'message' => __("Device have been added")) );
+			break;			
+		
+		case 'edit_device':
+			/* valid inputs */
+			if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+				_error(400);
+			}
+			/* update */
+			$db->query(sprintf("UPDATE models_device SET name=%s, server_id=%s WHERE id = %s", secure($_POST['name']), secure($_POST['server_id']), secure($_GET['id']) )) or _error(SQL_ERROR_THROWEN);
+			/* return */
+			return_json( array('success' => true, 'message' => __("Device info have been updated")) );
+			break;
+			
 		default:
 			_error(400);
 			break;
