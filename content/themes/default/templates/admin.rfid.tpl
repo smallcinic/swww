@@ -3,6 +3,13 @@
         <i class="fa fa-flag pr5 panel-icon"></i>
         <strong>{__("RFID")}</strong>
         {if $sub_view == "edit_rfid"} &rsaquo; <strong>{$data['rfid']}</strong>{/if}
+        {if $sub_view == ""}
+            <div class="pull-right flip">
+                <a href="{$system['system_url']}/admincp/rfid/add_rfid" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> {__("Add New RFID")}
+                </a>
+            </div>
+        {/if}
 		{if $sub_view == "edit_rfid" || $sub_view == "add_rfid"}
 			<div class="pull-right flip">
                 <a href="{$system['system_url']}/admincp/rfid" class="btn btn-primary">
@@ -60,12 +67,21 @@
                         <strong>{__("RFID")}</strong>
                     </label>
 		            <div class="col-sm-9">
-                        <input class="form-control" name="rfid" value="{$data['rfid']}" readonly>
+                        <input class="form-control" name="rfid" value="{$data['rfid']}" {if !$data['manual_edit']}readonly{/if}>
 						<span class="help-block">
                         {__("RFID ID, this must be NEVER edited manually")}
                         </span>
                     </div>
-					
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Allow RFID editing")}
+                    </label>
+                    <div class="col-sm-9">
+                        <label class="switch" for="manual_edit">
+                            <input type="checkbox" name="manual_edit" id="manual_edit" {if $data['manual_edit']}checked{/if}>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
                     <label class="col-sm-3 control-label text-left">
                         <strong>{__("Model")}</strong>
                     </label>
@@ -107,7 +123,6 @@
                             {__("This text is editable in Database->Records")}
                         </span>
                     </div>
-					
                 </div>
 
                 <div class="form-group">
@@ -125,6 +140,27 @@
                 <!-- error -->
             </form>
         </div>
- 
+    {elseif $sub_view == "add_rfid"}
+    <div class="panel-body">
+        <form class="js_ajax-forms form-horizontal" data-url="admin/rfid.php?do=add_rfid">
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label text-left">
+                    <strong>{__("RFID")}</strong>
+                </label>
+                <div class="col-sm-9">
+                    <input class="form-control" name="rfid">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button type="submit" class="btn btn-primary">{__("Submit")}</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
     {/if}
 </div>
