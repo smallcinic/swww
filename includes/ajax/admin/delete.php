@@ -60,6 +60,9 @@ try {
 	    case 'device':
 			 $db->query(sprintf("DELETE FROM models_device WHERE id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
 			 break;
+                case 'device':
+                         $db->query(sprintf("DELETE FROM models_rfid WHERE id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
+                         break;
 
 		case 'model_map':
                          $db->query(sprintf("DELETE FROM model_map WHERE id = %s", secure($_POST['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
