@@ -27,12 +27,27 @@ try {
 				_error(400);
 			}
 			/* update */
-			$db->query(sprintf("UPDATE models_rfid SET model_id = %s, record_id = %s WHERE id = %s", secure($_POST['model_id']), secure($_POST['record_id']), secure($_GET['id'], 'int') )) or _error(SQL_ERROR_THROWEN);
+			if ($_POST['manual_edit']){
+                $db->query(sprintf(
+                	"UPDATE models_rfid SET model_id = %s, record_id = %s, rfid = %s, manual_edit = 1 WHERE id = %s",
+					secure($_POST['model_id']), secure($_POST['record_id']), secure($_POST['rfid']), secure($_GET['id'], 'int') ))
+				or _error(SQL_ERROR_THROWEN);
+			} else {
+                $db->query(sprintf("UPDATE models_rfid SET model_id = %s, record_id = %s WHERE id = %s", secure($_POST['model_id']), secure($_POST['record_id']), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
+            }
 			/* return */
 			return_json( array('success' => true, 'message' => __("RFID info have been updated")) );
 			break;
 
-		default:
+        case 'add_rfid':
+            $db->query(sprintf(
+                "INSERT INTO models_rfid (rfid, manual_edit) VALUES (%s, 1)", secure($_POST['rfid'])) )
+            or _error(SQL_ERROR_THROWEN);
+            /* return */
+            return_json( array('callback' => 'window.location = "'.$system['system_url'].'/admincp/rfid";') );
+            break;
+
+        default:
 			_error(400);
 			break;
 	}
