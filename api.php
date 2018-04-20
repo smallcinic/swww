@@ -56,7 +56,15 @@ try {
 			break;
 			
 		case 'model':
-			switch ($_GET['query']) {
+				$new_id=0;
+                $database_id=15;
+                $research_id=16;
+                $tech_id=17;
+                $medic_id=19;
+                $hacking_id=20;
+                $self_id=21;
+                $root_id=22;
+    		switch ($_GET['query']) {
 				case 'tech':
 
 					break;
@@ -66,15 +74,74 @@ try {
 					break;
 
 				case 'research':
-					$get_research = $db->query(sprintf('SELECT * FROM model_rfid WHERE model = "research" AND rfid = %1$s', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
-                        if($get_research->num_rows > 0) {
-                            while($research = $get_research->fetch_assoc()) {
-                                print $research['text'];
-                            }
-                         } else {
-                            $db->query(sprintf('INSERT INTO model_rfid (rfid, model, text) VALUES (%s, "research", "Lorem ipsum")', secure($_GET['rfid']) )) or _error(SQL_ERROR_THROWEN);
-                            print "New RFID added";
-                        }
+				    //Ищем сервер для девайса
+					$rows = $db->query(sprintf('SELECT * FROM models_device WHERE name = %1$s', secure($_GET['device']) )) or _error(SQL_ERROR_THROWEN);
+                    if($rows->num_rows > 0) {
+				        while($row = $rows->fetch_assoc()) {
+					        $server_id=$row['server_id'];
+						}
+  				    }
+                    //определяем действие
+					if(!$_GET['rfid1']) {
+						//добавляем новую запись
+						$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,'Оборудование протестировано успешно','1')", secure('Тест: '.$_GET['device']), secure($server_id) )) or _error(SQL_ERROR_THROWEN);
+					} elseif (!$_GET['rfid2']) {
+						//Находим данные рфидки для нужной модели
+					    $rows = $db->query(sprintf('SELECT models_rfid.rfid, db_record.text AS text FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id WHERE model_id = %1$s AND rfid = %2$s LIMIT 1', secure($research_id), secure($_GET['rfid1']) )) or _error(SQL_ERROR_THROWEN);
+						if($rows->num_rows > 0) {
+				            while($row = $rows->fetch_assoc()) {
+					            $text=$row['text'];
+							}
+						} else {
+							$text="Объект неизвестен!";
+						}
+						//Копируем данные
+						$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Исследование завершено: ".$_GET['device']), secure($server_id), secure("Получена информация об бъекте: ".$text) )) or _error(SQL_ERROR_THROWEN);
+					} elseif ($_GET['rfid2'] && $_GET['rfid1']) {
+					   //Находим данные id записи рфидки1 для нужной модели
+					   $rows = $db->query(sprintf('SELECT models_rfid.* FROM models_rfid WHERE model_id = %1$s AND rfid = %2$s LIMIT 1', secure($research_id), secure($_GET['rfid1']) )) or _error(SQL_ERROR_THROWEN);
+						if($rows->num_rows > 0) {
+				            while($row = $rows->fetch_assoc()) {
+					            $id1=$row['record_id'];
+								$rfid1=$row['id'];
+							}
+						} else {
+							$text="Объект 1 неизвестен!";
+							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез невозможен: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
+                            break;
+						}
+					   //Находим данные id записи рфидки2 для нужной модели
+					   $rows = $db->query(sprintf('SELECT models_rfid.* FROM models_rfid WHERE model_id = %1$s AND rfid = %2$s LIMIT 1', secure($research_id), secure($_GET['rfid2']) )) or _error(SQL_ERROR_THROWEN);
+						if($rows->num_rows > 0) {
+				            while($row = $rows->fetch_assoc()) {
+					            $id2=$row['record_id'];
+								$rfid2=$row['id'];
+							}
+						} else {
+							$text="Объект 2 неизвестен!";
+							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез невозможен: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
+                            break;
+						}
+						//Находим правило синтеза
+						$rows = $db->query(sprintf('SELECT * FROM `models_research` WHERE rec1=%1$s AND rec2=%2$s LIMIT 1', secure($id1), secure($id2) )) or _error(SQL_ERROR_THROWEN);
+						if($rows->num_rows > 0) {
+				            while($row = $rows->fetch_assoc()) {
+					            $id3=$row['rec3'];
+							}
+							$db->query(sprintf("UPDATE models_rfid SET record_id = %s WHERE id = %s", secure($id3]), secure($rfid1), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
+							$db->query(sprintf("UPDATE models_rfid SET record_id = 0 WHERE id = %s", secure($rfid2), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
+							$rows = $db->query(sprintf('SELECT models_rfid.rfid, db_record.text AS text FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id WHERE model_id = %1$s AND rfid = %2$s LIMIT 1', secure($research_id), secure($_GET['rfid1']) )) or _error(SQL_ERROR_THROWEN);
+						        if($rows->num_rows > 0) {
+				                while($row = $rows->fetch_assoc()) {
+					                $text=$row['text'];
+							    }
+							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез завершён: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
+						} else {
+							$text="Нельзя сотворить здесь!";
+							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез невозможен: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
+                            break;
+						}
+					}
 
 					break;
 

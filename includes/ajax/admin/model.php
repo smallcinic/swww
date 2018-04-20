@@ -66,6 +66,24 @@ try {
 			return_json( array('success' => true, 'message' => __("Device info have been updated")) );
 			break;
 			
+		case 'add_research':
+			/* insert */
+			$db->query(sprintf("INSERT IGNORE INTO models_research (name, rec1, rec2, rec3) VALUES (%s,%s,%s,%s)", secure($_POST['name']), secure($_POST['rec1']), secure($_POST['rec2']), secure($_POST['rec3']) )) or _error(SQL_ERROR_THROWEN);
+                        /* return */
+                        return_json( array('success' => true, 'message' => __("Receipt have been added")) );
+			break;			
+		
+		case 'edit_research':
+			/* valid inputs */
+			if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+				_error(400);
+			}
+			/* update */
+			$db->query(sprintf("UPDATE models_research SET name=%s, rec1=%s, rec2=%s, rec3=%s WHERE id = %s", secure($_POST['name']), secure($_POST['rec1']), secure($_POST['rec2']), secure($_POST['rec3']), secure($_GET['id']) )) or _error(SQL_ERROR_THROWEN);
+			/* return */
+			return_json( array('success' => true, 'message' => __("Device info have been updated ")) );
+			break;			
+			
 		default:
 			_error(400);
 			break;

@@ -573,7 +573,66 @@ try {
 				// page header
 					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Add New"));
 					break;
-				
+
+				case 'research':
+					// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Research "));
+
+					// get data
+					$get_rows = $db->query("SELECT m.*, r1.name AS rec1_name, r2.name AS rec2_name, r3.name AS rec3_name FROM models_research AS m LEFT JOIN db_record AS r1 ON m.rec1=r1.id LEFT JOIN db_record AS r2 ON m.rec2=r2.id LEFT JOIN db_record AS r3 ON m.rec3=r3.id") or _error(SQL_ERROR);
+					if($get_rows->num_rows > 0) {
+						while($row = $get_rows->fetch_assoc()) {
+						$rows[] = $row;
+						}
+					}
+
+					// assign variables
+					$smarty->assign('rows', $rows);
+					break;
+
+				case 'edit_research':
+					if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+						_error(404);
+					}
+
+					// get data
+					$get_data = $db->query(sprintf("SELECT m.*, r1.name AS rec1_name, r2.name AS rec2_name, r3.name AS rec3_name FROM models_research AS m LEFT JOIN db_record AS r1 ON m.rec1=r1.id LEFT JOIN db_record AS r2 ON m.rec2=r2.id LEFT JOIN db_record AS r3 ON m.rec3=r3.id WHERE m.id=%s", secure($_GET['id'], 'int') )) or _error(SQL_ERROR);
+					if($get_data->num_rows == 0) {
+						_error(404);
+					}
+					$data = $get_data->fetch_assoc();
+
+					$get_rows_server = $db->query("SELECT id, name FROM db_record") or _error(SQL_ERROR);
+					if($get_rows_server->num_rows > 0) {
+                                                while($row_server = $get_rows_server->fetch_assoc()) {
+                                                $rows_server[] = $row_server;
+                                                }
+                                        }
+
+					// assign variables
+					$smarty->assign('rows_server', $rows_server);
+					$smarty->assign('data', $data);
+
+					// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Receipt")." &rsaquo; ".$data['name']);
+					break;
+
+				case 'add_research':
+					$get_rows_server = $db->query("SELECT id, name FROM db_record") or _error(SQL_ERROR);
+					if($get_rows_server->num_rows > 0) {
+                                                while($row_server = $get_rows_server->fetch_assoc()) {
+                                                $rows_server[] = $row_server;
+                                                }
+                                        }
+
+					// assign variables
+					$smarty->assign('rows_server', $rows_server);
+
+				// page header
+					page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Receipt").__("Add New"));
+					break;
+
+					
 				default:
 					_error(404);
 					break;
@@ -581,65 +640,59 @@ try {
 			break;
 
 		case 'rfid':
-        	switch ($_GET['sub_view']) {
-        		case '':
-        			// page header
-        			page_header(__("Admin")." &rsaquo; ".__("rfid"));
+                        switch ($_GET['sub_view']) {
+                                case '':
+                                        // page header
+                                        page_header(__("Admin")." &rsaquo; ".__("rfid"));
 
-        			// get data
-        			$get_rows = $db->query("SELECT models_rfid.*, db_record.name AS name, db_record.text AS text, model.name AS model FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id LEFT JOIN model ON models_rfid.model_id=model.id") or _error(SQL_ERROR);
-        			if($get_rows->num_rows > 0) {
-        			        while($row = $get_rows->fetch_assoc()) {
-        			        $rows[] = $row;
-        			        }
-        			}
+                                        // get data
+                                        $get_rows = $db->query("SELECT models_rfid.*, db_record.name AS name, db_record.text AS text, model.name AS model FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id LEFT JOIN model ON models_rfid.model_id=model.id") or _error(SQL_ERROR);
+                                        if($get_rows->num_rows > 0) {
+                                                while($row = $get_rows->fetch_assoc()) {
+                                                $rows[] = $row;
+                                                }
+                                        }
 
-        			// assign variables
-        			$smarty->assign('rows', $rows);
-        			break;
+                                        // assign variables
+                                        $smarty->assign('rows', $rows);
+                                        break;
+                                case 'edit_rfid':
+                                        if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+                                                _error(404);
+                                        }
 
-        		case 'edit_rfid':
-        			if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-        			        _error(404);
-        			}
+                                        // get data
+                                        $get_data = $db->query(sprintf("SELECT models_rfid.*, db_record.text AS text FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id WHERE models_rfid.id = %s", secure($_GET['id'], 'int') )) or _error(SQL_ERROR);
+                                        if($get_data->num_rows == 0) {
+                                                _error(404);
+                                        }
+                                        $data = $get_data->fetch_assoc();
 
-        			// get data
-        			$get_data = $db->query(sprintf("SELECT models_rfid.*, db_record.text AS text FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id WHERE models_rfid.id = %s", secure($_GET['id'], 'int') )) or _error(SQL_ERROR);
-        			if($get_data->num_rows == 0) {
-        			        _error(404);
-        			}
-        			$data = $get_data->fetch_assoc();
+										$get_rows_record = $db->query(sprintf("SELECT * FROM db_record")) or _error(SQL_ERROR);
+                                        if($get_rows_record->num_rows > 0) {
+                                            while($row_record = $get_rows_record->fetch_assoc()) {
+                                                $rows_record[] = $row_record;
+                                            }
+                                        }
+										
+										$get_rows_model = $db->query("SELECT * FROM model") or _error(SQL_ERROR);
+                                        if($get_rows_model->num_rows > 0) {
+                                            while($row_model = $get_rows_model->fetch_assoc()) {
+                                                $rows_model[] = $row_model;
+                                            }
+                                        }
 
-					$get_rows_record = $db->query(sprintf("SELECT * FROM db_record")) or _error(SQL_ERROR);
-        			if($get_rows_record->num_rows > 0) {
-        			    while($row_record = $get_rows_record->fetch_assoc()) {
-        			        $rows_record[] = $row_record;
-        			    }
-        			}
+                                        // assign variables
+                                        $smarty->assign('data', $data);
+										$smarty->assign('rows_record', $rows_record);
+										$smarty->assign('rows_model', $rows_model);
 
-					$get_rows_model = $db->query("SELECT * FROM model") or _error(SQL_ERROR);
-        			if($get_rows_model->num_rows > 0) {
-        			    while($row_model = $get_rows_model->fetch_assoc()) {
-        			        $rows_model[] = $row_model;
-        			    }
-        			}
-
-        			// assign variables
-        			$smarty->assign('data', $data);
-					$smarty->assign('rows_record', $rows_record);
-					$smarty->assign('rows_model', $rows_model);
-
-        			// page header
-        			page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Edit model rfid"));
-        			break;
-
-        		case 'add_rfid':
-					page_header(__("Admin")." &rsaquo; ".__("rfid")." &rsaquo; ".__("Add New"));
-					break;
-
-        		default:
-        			_error(404);
-        			break;
+                                        // page header
+                                        page_header(__("Admin")." &rsaquo; ".__("Models")." &rsaquo; ".__("Edit model rfid"));
+                                        break;
+                                default:
+                                        _error(404);
+                                        break;
 			}
 			break;
 

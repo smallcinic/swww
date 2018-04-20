@@ -6,6 +6,8 @@
         {if $sub_view == "add_model"} &rsaquo; <strong>{__("Add New")}</strong>{/if}
 	{if $sub_view == "map"} &rsaquo; <strong>{__("Map")}</strong>{/if}
 	{if $sub_view == "device"} &rsaquo; <strong>{__("Device")}</strong>{/if}
+		{if $sub_view == "research"} &rsaquo; <strong>{__("Device")}</strong>{/if}
+
 
         {if $sub_view == ""}
             <div class="pull-right flip">
@@ -25,6 +27,13 @@
             <div class="pull-right flip">
                 <a href="{$system['system_url']}/admincp/model/add_device" class="btn btn-primary">
                     <i class="fa fa-plus"></i> {__("Add New Device")}
+                </a>
+            </div>
+        {/if}
+		{if $sub_view == "research"}
+            <div class="pull-right flip">
+                <a href="{$system['system_url']}/admincp/model/add_research" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> {__("Add New Receipt")}
                 </a>
             </div>
         {/if}
@@ -316,5 +325,199 @@
                 <!-- error -->				
             </form>
         </div>
-    {/if}
+    {elseif $sub_view == "research"}
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover js_dataTable">
+                    <thead>
+                        <tr>
+                            <th>{__("ID")}</th>
+							<th>{__("Name")}</th>
+                            <th>{__("rec1")}</th>
+							<th>{__("rec2")}</th>
+                            <th>{__("rec3")}</th>
+                            <th>{__("Actions")}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach $rows as $row}
+                        <tr>
+                            <td>{$row['id']}</td>
+							<td>{$row['name']}</td>
+                            <td>{$row['rec1_name']}</td>
+                            <td>{$row['rec2_name']}</td>
+                            <td>{$row['rec3_name']}</td>							
+                            <td>
+                                <button data-toggle="tooltip" data-placement="top" title='{__("Delete")}' class="btn btn-xs btn-danger js_admin-deleter" data-handle="research" data-id="{$row['id']}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <a data-toggle="tooltip" data-placement="top" title='{__("Edit")}' href="{$system['system_url']}/admincp/model/edit_research/{$row['id']}" class="btn btn-xs btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {elseif $sub_view == "add_research"}
+        <div class="panel-body">
+            <form class="js_ajax-forms form-horizontal" data-url="admin/model.php?do=add_research">
+			
+                <div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Name")}
+                    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="name">
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Record 1")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec1">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}">
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Record 2")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec2">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}">
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Result")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec3">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}">
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary">{__("Add New")}</button>
+                    </div>
+                </div>
+
+                <!-- success -->
+                <div class="alert alert-success mb0 mt10 x-hidden" role="alert"></div>
+                <!-- success -->
+
+                <!-- error -->
+                <div class="alert alert-danger mb0 mt10 x-hidden" role="alert"></div>
+                <!-- error -->				
+            </form>
+        </div>
+    {elseif $sub_view == "edit_research"}
+	    <div class="panel-body">
+            <form class="js_ajax-forms form-horizontal" data-url="admin/model.php?do=edit_research&id={$data['id']}">
+			
+                <div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Name")}
+                    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="name"  value="{$data['name']}">
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Record 1")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec1">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}" {if $row_server['id']==$data['rec1']}selected{/if}>
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Record 2")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec2">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}" {if $row_server['id']==$data['rec2']}selected{/if}>
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-3 control-label text-left">
+                        {__("Result")}
+                    </label>
+                    <div class="col-sm-9">
+                        <select class="form-control selectpicker" name="rec3">
+				            {foreach $rows_server as $row_server}
+                                <option value="{$row_server['id']}" {if $row_server['id']==$data['rec3']}selected{/if}>
+                                    {$row_server['name']}
+                                </option>
+                            {/foreach}
+                        </select>
+						<span class="help-block">
+                            {__("Select record from added before. You may add new on this psge:")} <a target="_blank" href="/admincp/model/add_model">{__("Click Here")}</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary">{__("Add New")}</button>
+                    </div>
+                </div>
+
+                <!-- success -->
+                <div class="alert alert-success mb0 mt10 x-hidden" role="alert"></div>
+                <!-- success -->
+
+                <!-- error -->
+                <div class="alert alert-danger mb0 mt10 x-hidden" role="alert"></div>
+                <!-- error -->				
+            </form>
+        </div>
+	{/if}
 </div>

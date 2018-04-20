@@ -193,6 +193,11 @@
 				            <i class="fa fa-caret-right fa-fw pr10"></i>{__("Devices")}
 				        </a>
 				    </li>
+					<li {if $view == "model" && $sub_view == "research"}class="active"{/if} {if $view == "model" && $sub_view == "add_research"}class="active"{/if} {if $view == "model" && $sub_view == "edit_research"}class="active"{/if}>
+				        <a href="{$system['system_url']}/admincp/model/research">
+				            <i class="fa fa-caret-right fa-fw pr10"></i>{__("Research receipts")}
+				        </a>
+				    </li>
 				</ul>
 			</li>
 			<!-- Models -->
