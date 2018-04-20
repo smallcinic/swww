@@ -122,7 +122,7 @@ try {
 								$rfid2=$row['id'];
 							}
 						} else {
-							$text="Объект 2 неизвестен!";
+							$text=$text."Объект 2 неизвестен!";
 							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез невозможен: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
                             break;
 						}
@@ -132,22 +132,22 @@ try {
 				            while($row = $rows->fetch_assoc()) {
 					            $id3=$row['rec3'];
 							}
-							$db->query(sprintf("UPDATE models_rfid SET record_id = %s WHERE id = %s", secure($id3]), secure($rfid1), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
+							$db->query(sprintf("UPDATE models_rfid SET record_id = %s WHERE id = %s", secure($id3), secure($rfid1), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
 							$db->query(sprintf("UPDATE models_rfid SET record_id = 0 WHERE id = %s", secure($rfid2), secure($_GET['id'], 'int'))) or _error(SQL_ERROR_THROWEN);
 							$rows = $db->query(sprintf('SELECT models_rfid.rfid, db_record.text AS text FROM models_rfid LEFT JOIN db_record ON models_rfid.record_id=db_record.id WHERE model_id = %1$s AND rfid = %2$s LIMIT 1', secure($research_id), secure($_GET['rfid1']) )) or _error(SQL_ERROR_THROWEN);
 						        if($rows->num_rows > 0) {
-				                while($row = $rows->fetch_assoc()) {
-					                $text=$row['text'];
-							    }
+				                    while($row = $rows->fetch_assoc()) {
+					                    $text=$row['text'];
+							        }
+								}
 							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез завершён: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
 						} else {
 							$text="Нельзя сотворить здесь!";
 							$db->query(sprintf("INSERT INTO db_record (name, server_id, text, available) VALUES (%s,%s,%s,'1')", secure("Синтез невозможен: ".$_GET['device']), secure($server_id), secure($text) )) or _error(SQL_ERROR_THROWEN);
-                            break;
 						}
 					}
-
-					break;
+				    
+				break;
 
 				case 'lock':
                     //Проверка существования рфидок - для добавления новых
