@@ -80,7 +80,11 @@ try {
 				        while($row = $rows->fetch_assoc()) {
 					        $server_id=$row['server_id'];
 						}
-  				    }
+  				    } else {
+					    // добавляем девайс с нулевым сервером
+						$server_id=0;
+					    $db->query(sprintf("INSERT IGNORE INTO models_device (name, server_id) VALUES (%s,%s)", secure($_GET['device']), secure($server_id) )) or _error(SQL_ERROR_THROWEN);
+					}
                     //определяем действие
 					if(!$_GET['rfid1']) {
 						//добавляем новую запись

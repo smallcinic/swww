@@ -355,7 +355,7 @@ CREATE TABLE `db_record` (
   `text` text NOT NULL,
   `available` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -364,7 +364,7 @@ CREATE TABLE `db_record` (
 
 LOCK TABLES `db_record` WRITE;
 /*!40000 ALTER TABLE `db_record` DISABLE KEYS */;
-INSERT INTO `db_record` VALUES (5,6,'Брелок 1','Брелок 1. Тестовый брелок для проверки работы прототипа железяки. Так надо.',1),(6,7,'тестовый имплантат для cinic','тестовый имплантат для cinic. Эта запись есть в игротехническом сервере для игрока и содержит описание имплантата. Она привязана к самой сущности имплантата.\r\nПри его установке запись переносится на сервер имплантатов игрока. При этом сущность &quot;имплантат&quot; из другой модели привязывается к игроку в боёвке.\r\nПри снятии запись переносится на сервер снятых имплантатов.\r\nПри уничтожении запись помечается как недоступная.\r\nИнвентарь не нужен - у кого RFID с привязкой к имплантату - тот и папа.\r\n\r\nКстати, эта запись лежит на сервере, к кторорому у cinic доступ на редактирование, но не на удаление. И оно работает!',1),(18,6,'Тестовая запись','Просто тестовая запись',1);
+INSERT INTO `db_record` VALUES (5,6,'Брелок 1','Брелок 1. Тестовый брелок для проверки работы прототипа железяки. Так надо.',1),(6,7,'тестовый имплантат для cinic','тестовый имплантат для cinic. Эта запись есть в игротехническом сервере для игрока и содержит описание имплантата. Она привязана к самой сущности имплантата.\r\nПри его установке запись переносится на сервер имплантатов игрока. При этом сущность &quot;имплантат&quot; из другой модели привязывается к игроку в боёвке.\r\nПри снятии запись переносится на сервер снятых имплантатов.\r\nПри уничтожении запись помечается как недоступная.\r\nИнвентарь не нужен - у кого RFID с привязкой к имплантату - тот и папа.\r\n\r\nКстати, эта запись лежит на сервере, к кторорому у cinic доступ на редактирование, но не на удаление. И оно работает!',1),(18,6,'Тестовая запись','Просто тестовая запись',1),(20,8,'Тест: addtest','Оборудование протестировано',1);
 /*!40000 ALTER TABLE `db_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -824,7 +824,7 @@ CREATE TABLE `model` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'permission id',
   `name` varchar(64) NOT NULL COMMENT 'permission group name',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -890,6 +890,34 @@ INSERT INTO `models_device` VALUES (0,'addtest',8,NULL);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `models_research`
+--
+
+DROP TABLE IF EXISTS `models_research`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `models_research` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `rec1` int(11) NOT NULL,
+  `rec2` int(11) NOT NULL,
+  `rec3` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `models_research`
+--
+
+LOCK TABLES `models_research` WRITE;
+/*!40000 ALTER TABLE `models_research` DISABLE KEYS */;
+INSERT INTO `models_research` VALUES (1,'testadd',5,6,18),(2,'testedit',6,6,20);
+/*!40000 ALTER TABLE `models_research` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `models_rfid`
 --
 
@@ -901,6 +929,7 @@ CREATE TABLE `models_rfid` (
   `rfid` varchar(100) NOT NULL,
   `model_id` int(11) NOT NULL,
   `record_id` int(11) NOT NULL,
+  `manual_edit` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -911,7 +940,7 @@ CREATE TABLE `models_rfid` (
 
 LOCK TABLES `models_rfid` WRITE;
 /*!40000 ALTER TABLE `models_rfid` DISABLE KEYS */;
-INSERT INTO `models_rfid` VALUES (7,'1039485010',15,18);
+INSERT INTO `models_rfid` VALUES (7,'1039485010',16,18,1);
 /*!40000 ALTER TABLE `models_rfid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1184,7 +1213,7 @@ CREATE TABLE `posts_articles` (
 
 LOCK TABLES `posts_articles` WRITE;
 /*!40000 ALTER TABLE `posts_articles` DISABLE KEYS */;
-INSERT INTO `posts_articles` VALUES (1,1,'','Добавляем permissions в админку','&lt;p&gt;В данном случае на примере добавления permissions - прав пользователей для доступа к другим моделькам.&lt;/p&gt;\r\n&lt;p&gt;0) Создаём таблицу в базе:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt;CREATE TABLE permissions (&lt;br /&gt; permission_id int(10) NOT NULL AUTO_INCREMENT COMMENT &#039;permission id&#039;,&lt;br /&gt; permission_name varchar(64) NOT NULL COMMENT &#039;permission group name&#039;,&lt;br /&gt;PRIMARY KEY (permission_id)&lt;br /&gt;) ENGINE=InnoDB DEFAULT CHARSET=utf8;&lt;/pre&gt;\r\n&lt;p&gt;1) Добавить раздел в admin.php. Не забываем про всякие edit - для них тоже нужны ссылки. В нашем случае у нас будут базовый раздел со списком, страница добавления и страница редактирования.&lt;/p&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;permissions&#039;:&lt;br /&gt; // get content&lt;br /&gt; switch ($_GET[&#039;sub_view&#039;]) {&lt;br /&gt; case &#039;&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;));&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_rows = $db-&amp;gt;query(&quot;SELECT * FROM permissions&quot;) or _error(SQL_ERROR);&lt;br /&gt; if($get_rows-&amp;gt;num_rows &amp;gt; 0) {&lt;br /&gt; while($row = $get_rows-&amp;gt;fetch_assoc()) {&lt;br /&gt; $rows[] = $row;&lt;br /&gt; }&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;rows&#039;, $rows);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;edit_permission&#039;:&lt;br /&gt; if(!isset($_GET[&#039;id&#039;]) || !is_numeric($_GET[&#039;id&#039;])) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_data = $db-&amp;gt;query(sprintf(&quot;SELECT * FROM permissions WHERE permission_id = %s&quot;, secure($_GET[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR);&lt;br /&gt; if($get_data-&amp;gt;num_rows == 0) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;br /&gt; $data = $get_data-&amp;gt;fetch_assoc();&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;data&#039;, $data);&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.$data[&#039;permission_name&#039;]);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;add_permission&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Add New&quot;));&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;default:&lt;br /&gt; _error(404);&lt;br /&gt; break;&lt;br /&gt; }&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p&gt;2) Добавляем в меню - правим content/themes/default/templates/admin.tpl :&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;lt;li {if $view == &quot;permissions&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot; class=&quot;no-border&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-desktop fa-fw fa-lg pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Permissions&quot;)}&lt;br /&gt; &amp;lt;span class=&quot;fa arrow&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;ul&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;List Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;add&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions/add_permission&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Add New Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;/ul&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;/p&gt;\r\n&lt;p&gt;3) создаём шаблон страницы админки в теме - у нас это будет content/themes/default/templates/admin.permissions.tpl и правим как нам надо.&lt;/p&gt;\r\n&lt;p&gt;4) создаём скрипт ./includes/ajax/admin/permissions.php - на него в шаблоне&amp;nbsp;admin.permissions.tpl ведут все запросы.&lt;/p&gt;\r\n&lt;p&gt;5) для кнопки удаления из&amp;nbsp;admin.permissions.tpl не забываем добавить условие в includes/ajax/admin/delete.php:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt; case &#039;permissions&#039;:&lt;br /&gt; $db-&amp;gt;query(sprintf(&quot;DELETE FROM permissions WHERE permission_id = %s&quot;, secure($_POST[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR_THROWEN);&lt;br /&gt; break;&lt;/pre&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;На этом всё - раздел добавлен и мы можем добавлять, удалять и переименовывать группы прав. Основное всё, конечно, запихнуто в шаблон и php скрипт.&lt;/p&gt;','',56),(2,2,'','vkfhjvgjeh','&lt;p&gt;cvrfevsretfvg&lt;/p&gt;','',23),(3,3,'','tests fhjgfchewv','&lt;p&gt;test&lt;/p&gt;','',54),(4,4,'','page blog','&lt;p&gt;vhgfbkjhe&lt;/p&gt;','',8),(5,10,'photos/2018/02/sngine_fce2e944f73889d8d91c7e42153582fb.jpg','test page blog','&lt;p&gt;subj&lt;/p&gt;','',41),(6,19,'','11111','&lt;p&gt;111111111&lt;/p&gt;','',1);
+INSERT INTO `posts_articles` VALUES (1,1,'','Добавляем permissions в админку','&lt;p&gt;В данном случае на примере добавления permissions - прав пользователей для доступа к другим моделькам.&lt;/p&gt;\r\n&lt;p&gt;0) Создаём таблицу в базе:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt;CREATE TABLE permissions (&lt;br /&gt; permission_id int(10) NOT NULL AUTO_INCREMENT COMMENT &#039;permission id&#039;,&lt;br /&gt; permission_name varchar(64) NOT NULL COMMENT &#039;permission group name&#039;,&lt;br /&gt;PRIMARY KEY (permission_id)&lt;br /&gt;) ENGINE=InnoDB DEFAULT CHARSET=utf8;&lt;/pre&gt;\r\n&lt;p&gt;1) Добавить раздел в admin.php. Не забываем про всякие edit - для них тоже нужны ссылки. В нашем случае у нас будут базовый раздел со списком, страница добавления и страница редактирования.&lt;/p&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;permissions&#039;:&lt;br /&gt; // get content&lt;br /&gt; switch ($_GET[&#039;sub_view&#039;]) {&lt;br /&gt; case &#039;&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;));&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_rows = $db-&amp;gt;query(&quot;SELECT * FROM permissions&quot;) or _error(SQL_ERROR);&lt;br /&gt; if($get_rows-&amp;gt;num_rows &amp;gt; 0) {&lt;br /&gt; while($row = $get_rows-&amp;gt;fetch_assoc()) {&lt;br /&gt; $rows[] = $row;&lt;br /&gt; }&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;rows&#039;, $rows);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;edit_permission&#039;:&lt;br /&gt; if(!isset($_GET[&#039;id&#039;]) || !is_numeric($_GET[&#039;id&#039;])) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// get data&lt;br /&gt; $get_data = $db-&amp;gt;query(sprintf(&quot;SELECT * FROM permissions WHERE permission_id = %s&quot;, secure($_GET[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR);&lt;br /&gt; if($get_data-&amp;gt;num_rows == 0) {&lt;br /&gt; _error(404);&lt;br /&gt; }&lt;br /&gt; $data = $get_data-&amp;gt;fetch_assoc();&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// assign variables&lt;br /&gt; $smarty-&amp;gt;assign(&#039;data&#039;, $data);&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;// page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.$data[&#039;permission_name&#039;]);&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;case &#039;add_permission&#039;:&lt;br /&gt; // page header&lt;br /&gt; page_header(__(&quot;Admin&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Permissions&quot;).&quot; &amp;amp;rsaquo; &quot;.__(&quot;Add New&quot;));&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;default:&lt;br /&gt; _error(404);&lt;br /&gt; break;&lt;br /&gt; }&lt;br /&gt; break;&lt;/p&gt;\r\n&lt;p&gt;2) Добавляем в меню - правим content/themes/default/templates/admin.tpl :&lt;/p&gt;\r\n&lt;p style=&quot;padding-left: 60px;&quot;&gt;&amp;lt;li {if $view == &quot;permissions&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot; class=&quot;no-border&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-desktop fa-fw fa-lg pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Permissions&quot;)}&lt;br /&gt; &amp;lt;span class=&quot;fa arrow&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;ul&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;List Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;li {if $view == &quot;permissions&quot; &amp;amp;&amp;amp; $sub_view == &quot;add&quot;}class=&quot;active&quot;{/if}&amp;gt;&lt;br /&gt; &amp;lt;a href=&quot;{$system[&#039;system_url&#039;]}/admincp/permissions/add_permission&quot;&amp;gt;&lt;br /&gt; &amp;lt;i class=&quot;fa fa-caret-right fa-fw pr10&quot;&amp;gt;&amp;lt;/i&amp;gt;{__(&quot;Add New Permissions&quot;)}&lt;br /&gt; &amp;lt;/a&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;br /&gt; &amp;lt;/ul&amp;gt;&lt;br /&gt; &amp;lt;/li&amp;gt;&lt;/p&gt;\r\n&lt;p&gt;3) создаём шаблон страницы админки в теме - у нас это будет content/themes/default/templates/admin.permissions.tpl и правим как нам надо.&lt;/p&gt;\r\n&lt;p&gt;4) создаём скрипт ./includes/ajax/admin/permissions.php - на него в шаблоне&amp;nbsp;admin.permissions.tpl ведут все запросы.&lt;/p&gt;\r\n&lt;p&gt;5) для кнопки удаления из&amp;nbsp;admin.permissions.tpl не забываем добавить условие в includes/ajax/admin/delete.php:&lt;/p&gt;\r\n&lt;pre style=&quot;padding-left: 60px;&quot;&gt; case &#039;permissions&#039;:&lt;br /&gt; $db-&amp;gt;query(sprintf(&quot;DELETE FROM permissions WHERE permission_id = %s&quot;, secure($_POST[&#039;id&#039;], &#039;int&#039;) )) or _error(SQL_ERROR_THROWEN);&lt;br /&gt; break;&lt;/pre&gt;\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;На этом всё - раздел добавлен и мы можем добавлять, удалять и переименовывать группы прав. Основное всё, конечно, запихнуто в шаблон и php скрипт.&lt;/p&gt;','',58),(2,2,'','vkfhjvgjeh','&lt;p&gt;cvrfevsretfvg&lt;/p&gt;','',23),(3,3,'','tests fhjgfchewv','&lt;p&gt;test&lt;/p&gt;','',54),(4,4,'','page blog','&lt;p&gt;vhgfbkjhe&lt;/p&gt;','',8),(5,10,'photos/2018/02/sngine_fce2e944f73889d8d91c7e42153582fb.jpg','test page blog','&lt;p&gt;subj&lt;/p&gt;','',41),(6,19,'','11111','&lt;p&gt;111111111&lt;/p&gt;','',1);
 /*!40000 ALTER TABLE `posts_articles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2148,7 +2177,7 @@ CREATE TABLE `users_online` (
 
 LOCK TABLES `users_online` WRITE;
 /*!40000 ALTER TABLE `users_online` DISABLE KEYS */;
-INSERT INTO `users_online` VALUES (1,'2018-04-18 04:13:30');
+INSERT INTO `users_online` VALUES (1,'2018-04-20 04:54:38');
 /*!40000 ALTER TABLE `users_online` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2295,4 +2324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-18  5:47:35
+-- Dump completed on 2018-04-20  4:54:40
